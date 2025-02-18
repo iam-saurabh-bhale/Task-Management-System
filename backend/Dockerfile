@@ -1,16 +1,15 @@
-# Use a base image with NodeJS 18
-FROM node:lts
- 
-# Install all the dependencies in the container using the package.json file
-WORKDIR /app
-COPY package*.json .
+FROM node:slim
+WORKDIR /usr/src/app
+COPY package*.json ./
 RUN npm install
- 
-# Copy the remaining project files to the container
 COPY . .
- 
-# Expose the application port
+#COPY src/* .
+RUN npm run lint && npm run build
+
+FROM node:slim
+WORKDIR /usr/src/app
+COPY package*.json ./
+RUN npm install --only=production
+COPY . ./
 EXPOSE 3001
- 
-# Run the App
-CMD npm start
+ENTRYPOINT [ "node","./src/index.js" ]

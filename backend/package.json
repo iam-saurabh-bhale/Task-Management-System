@@ -4,6 +4,7 @@
   "description": "Node.js backend with Express and PostgreSQL",
   "main": "src/index.js",
   "scripts": {
+    "build": "node src/index.js",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "test": "jest"
