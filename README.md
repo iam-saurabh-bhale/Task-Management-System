@@ -1,4 +1,4 @@
-# devops_assignment_react
+# devops_react
 ## Application 1: Task Management System (React.js + Node.js)
 
 ### Overview
